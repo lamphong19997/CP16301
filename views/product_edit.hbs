@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+        <h1>Product Details</h1>
+        <form role="form" method="post" action="/san-pham/{{product._id}}/edit"
+        enctype="multipart/form-data">
+            <div class="form-group">
+                <label>Name</label>
+                <input class="form-control" value="{{product.name}}" name="name" type="text">
+            </div>
+            <div class="form-group">
+                <label>Price</label>
+                <input class="form-control" value="{{product.price}}" name="price" type="number">
+            </div>
+            <div class="form-group">
+                <label>Quantity</label>
+                <input class="form-control" value="{{product.quantity}}" name="quantity" type="number">
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control" name="description">{{product.description}}</textarea>
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                <select class="form-control" name="category_id">
+                    {{#each categories}}
+                        {{#if this.selected}}
+                            <option selected value="{{this._id}}">{{this.name}}</option>
+                        {{else}}
+                            <option value="{{this._id}}">{{this.name}}</option>
+                        {{/if}}
+                    {{/each}}
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <input class="form-control" name="image" type="file">
+                <img width="300" height="300" src="{{product.image}}"/>
+            </div>
+            <div class="form-group">
+                <label>Released</label>
+                <input class="form-control" value="{{product.released}}" name="released" type="date">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="reset" class="btn btn-success">Reset</button>
+        </form>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
+
